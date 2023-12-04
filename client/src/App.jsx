@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import './App.css'
 
 
 
@@ -38,7 +39,7 @@ const App = () => {
         {data.map((item, index) => (
           <Col key={index}>
             <Card>
-              <Card.Img variant="top" src={item.productImage} />
+              <Card.Img variant="top" src={item.productImage} className='img'/>
               <Card.Body>
                 <Card.Title>{item.productName}</Card.Title>
                 <Card.Text>{item.productDetails}</Card.Text>

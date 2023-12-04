@@ -51,9 +51,10 @@ export const uploadProduct = async (req, res) => {
 };
 export const updateProduct=async(req,res)=>{
     try {
-        const productEdit =  await Product.findByIdAndUpdate(req.params.id, req.body,{
+        const productEdit =  await Product.findByIdAndUpdate(req.params.id,{
             new: true
         })
+        console.log(req.params)
     
         if (!productEdit) res.status(400).json({message:`product ${req.params.id} does not exist`})
     
