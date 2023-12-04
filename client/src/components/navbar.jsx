@@ -13,7 +13,7 @@ function NavbarExample() {
           <Navbar.Brand href="#home">e-commerce application</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/landing">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#Categories">Categories</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
         </Container>
@@ -23,6 +23,8 @@ function NavbarExample() {
       <Routes>
         
         <Route path='/login' element={<Login/>}/>
+        <Route index element={<App/>}/>
+        <Route path="/landing" element={<App/>}/>
         
       </Routes>
 </BrowserRouter>

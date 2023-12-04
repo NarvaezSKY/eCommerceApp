@@ -1,4 +1,5 @@
 import Product from "../models/productModel.js";
+import { uploadFile } from "../util/uploadFile.js";
 
 
 export const getAllProducts=async(req,res)=>{
@@ -19,25 +20,35 @@ export const getProduct=async(req,res)=>{
     }
 }
 
-export const uploadProduct=async(req,res)=>{
-    const {productName, productDetails, productPrice}=req.body
+export const uploadProduct = async (req, res) => {
+    const body = req.body;
+    const productImage = req.file;
+
+    console.log('Inicio del controlador uploadProduct');
 
     try {
-        const newProduct= new Product({
-            productName,
-            productDetails,
-            productPrice
-        })
-    
-        const productSaved=await newProduct.save()
-        res.status(200).json({productSaved})
+        if (productImage) {
+            const { ref, downloadURL } = await uploadFile(productImage);
 
+            // Guardar información del producto en la base de datos
+            const newProduct = await new Product({
+                productName: body.productName,
+                productDetails: body.productDetails,
+                productPrice: body.productPrice,
+                productImage: downloadURL
+            }).save();
+
+            console.log('Producto guardado:', newProduct);
+            res.status(200).json({ newProduct });
+        } else {
+            console.log('No se recibió la imagen');
+            res.status(400).json({ message: 'No se recibió la imagen' });
+        }
     } catch (error) {
-        res.status(500).json({message:`ERROR! ${error}`})
+        console.error('Error en el controlador uploadProduct:', error);
+        res.status(500).json({ message: `ERROR! ${error.message}` });
     }
-
-}
-
+};
 export const updateProduct=async(req,res)=>{
     try {
         const productEdit =  await Product.findByIdAndUpdate(req.params.id, req.body,{

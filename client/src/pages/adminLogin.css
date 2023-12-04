@@ -1,0 +1,13 @@
+.loginForm{
+    margin-top: 5%;
+    color: aliceblue;
+    width: 50%;
+    
+}
+.so{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+
+}

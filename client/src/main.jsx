@@ -10,9 +10,7 @@ import Container from 'react-bootstrap/esm/Container.js';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
     <BrandExample/>
-    <Container data-bs-theme="dark">
-      <App />
-    </Container>
+  
   </>    
 
   

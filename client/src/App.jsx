@@ -31,13 +31,14 @@ const App = () => {
   }, [App]); 
 
   return (
-    <Container>
+    <Container
+    data-bs-theme="dark">
       <h3 className="mt-4 mb-4" style={{color:"white"}} >Our latest products:</h3>
       <Row xs={1} md={2} lg={3} xl={4} className="g-4">
         {data.map((item, index) => (
           <Col key={index}>
             <Card>
-              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Img variant="top" src={item.productImage} />
               <Card.Body>
                 <Card.Title>{item.productName}</Card.Title>
                 <Card.Text>{item.productDetails}</Card.Text>
