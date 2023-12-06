@@ -11,6 +11,7 @@ connection();
 app.use(Express.json())
 app.use(cors())
 app.use(morgan('dev'))
+
 //API Middlewares
 app.use('/api', productRouter)
 app.use('/api', userRouter)
