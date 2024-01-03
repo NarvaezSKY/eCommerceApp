@@ -1,4 +1,7 @@
+import { createToken } from '../middlewares/jwt.js'
 import User from '../models/userModel.js'
+import bcrypt from 'bcryptjs'
+import {TOKEN} from '../config/tokenSecret.js'
 
 export const getAllUsers=async(req,res)=>{
     try {
