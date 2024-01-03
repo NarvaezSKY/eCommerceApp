@@ -49,9 +49,10 @@ export const uploadProduct = async (req, res) => {
         res.status(500).json({ message: `ERROR! ${error.message}` });
     }
 };
+
 export const updateProduct=async(req,res)=>{
     try {
-        const productEdit =  await Product.findByIdAndUpdate(req.params.id,{
+        const productEdit =  await Product.findByIdAndUpdate(req.params.id, req.body,{
             new: true
         })
         console.log(req.params)
@@ -61,8 +62,7 @@ export const updateProduct=async(req,res)=>{
         res.send(productEdit)
     } catch (error) {
         res.send(`ERROR! ${error}`)
-    }
-    
+    }   
 }
 
 export const deleteProduct=async(req,res)=>{
