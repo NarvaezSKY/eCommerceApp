@@ -4,6 +4,8 @@ import morgan from "morgan";
 import { connection } from "./database/db.js";
 import productRouter from './routes/product.routes.js'
 import userRouter from './routes/user.routes.js'
+import cookieParser from "cookie-parser";
+
 
 const app=Express()
 connection();
@@ -11,6 +13,7 @@ connection();
 app.use(Express.json())
 app.use(cors())
 app.use(morgan('dev'))
+app.use(cookieParser())
 
 //API Middlewares
 app.use('/api', productRouter)
